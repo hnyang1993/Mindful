@@ -118,10 +118,19 @@ dim(data)  # 97 x 1608
     }
    
   ## 0.2.4 comorbidity
-    (ADD codes HERE)  
-    var.comorbid = data.frame(variable = ,
-                              category = ,
-                              time = )
+    names(data)[c(187,197)] # typo
+    names(data)[c(187,197)] <- c("brpsq3", "brpsq13")
+    
+    comorbidity = data.frame(bl = c(paste0("brpsq", 1:26), "RPSQsom"),
+                          fu = c(paste0("rpsq", 1:26), "RPSQsom_fu"),
+                          mo3 = c(paste0("rpsq", 1:26, "_3mo"), "RPSQsom_3mo"),
+                          mo6 = c(paste0("rpsq", 1:26, "_6mo"), "RPSQsom_6mo"),
+                          mo12 = c(paste0("rpsq", 1:26, "_12mo"), "RPSQsom_12mo"),
+                          stringsAsFactors=FALSE)
+    
+    var.comorbid = data.frame(variable =  as.vector(as.matrix(comorbidity)),
+                              category = "comorbidity",
+                              time = rep(c("bl", "fu", "3mo", "6mo", "12mo"), each=27))
     
   ## 0.2.5 work productivity
     (ADD codes HERE)  
@@ -132,7 +141,7 @@ dim(data)  # 97 x 1608
   ## 0.2.6 coping strategy
     (ADD codes HERE)  
     var.coping = data.frame(variable = ,
-                              category = ,
+                              category = "coping",
                               time = )
     
   ## var.include, sample.include ################################################################
