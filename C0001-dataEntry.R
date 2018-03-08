@@ -133,10 +133,17 @@ dim(data)  # 97 x 1608
                               time = rep(c("bl", "fu", "3mo", "6mo", "12mo"), each=27))
     
   ## 0.2.5 work productivity
-    (ADD codes HERE)  
-    var.work = data.frame(variable = ,
-                              category = ,
-                              time = )
+    (ADD codes HERE)
+    work <- data.frame(bl = c("bwpai_q11","bwpai_q12","bhrs_m1","bhrs_m2","bhours1","bwpai_q5","bwpai_q6"),
+                   fu = c("wpai_q11","wpai_q12","hrs_m1","hrs_m2","hours1","wpai_q5","wpai_q6"),
+                   mo3 = paste(c("wpai_q11","wpai_q12","hrs_m1","hrs_m2","hours1","wpai_q5","wpai_q6"),"_3mo",sep=""),
+                   mo6 = paste(c("wpai_q11","wpai_q12","hrs_m1","hrs_m2","hours1","wpai_q5","wpai_q6"),"_6mo",sep=""),
+                   mo12 = paste(c("wpai_q11","wpai_q12","hrs_m1","hrs_m2","hours1","wpai_q5","wpai_q6"),"_12mo",sep=""),
+                   stringsAsFactors=FALSE)
+
+    var.comorbid = data.frame(variable =  as.vector(as.matrix(work)),
+                          category = "work productivity",
+                          time = rep(c("bl", "fu", "3mo", "6mo", "12mo"), each=7))
     
   ## 0.2.6 coping strategy
     (ADD codes HERE)  
